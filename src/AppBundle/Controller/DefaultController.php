@@ -1,5 +1,5 @@
 <?php
-
+/*this is a comment*/
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
