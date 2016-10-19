@@ -7,3 +7,11 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  company_repository:
+    class: AppBundle\Infrastructure\Repositories\CompanyRepository
+    factory: ["@doctrine.orm.default_entity_manager", getRepository]
+    arguments:
+      - AppBundle\Entity\Company
+  company_service:
+    class: AppBundle\Domain\Services\CompanyService
+    arguments: ["@company_repository"]
