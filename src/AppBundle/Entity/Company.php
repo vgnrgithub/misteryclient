@@ -43,7 +43,17 @@ class Company
      */
     private $nameRequest;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="agent_id", type="integer", nullable=false)
+     */
+    private $agent_id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Audit", mappedBy="company")
+     */
+    private $audits;
 
     /**
      * Get id
@@ -125,5 +135,19 @@ class Company
     public function getNameRequest()
     {
         return $this->nameRequest;
+    }
+
+    /**
+     * Set agent_id
+     *
+     * @param integer $agent_id
+     *
+     * @return Company
+     */
+    public function setAgent($agent_id)
+    {
+        $this->agent_id = $agent_id;
+
+        return $this;
     }
 }

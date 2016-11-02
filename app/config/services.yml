@@ -15,3 +15,11 @@ services:
   company_service:
     class: AppBundle\Domain\Services\CompanyService
     arguments: ["@company_repository"]
+  category_repository:
+      class: AppBundle\Infrastructure\Repositories\CategoryRepository
+      factory: ["@doctrine.orm.default_entity_manager", getRepository]
+      arguments:
+        - AppBundle\Entity\Category
+  category_service:
+      class: AppBundle\Domain\Services\CategoryService
+      arguments: ["@category_repository"]
