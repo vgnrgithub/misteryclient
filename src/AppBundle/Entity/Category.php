@@ -30,11 +30,25 @@ class Category
     private $name;
 
     /**
+     * @var text
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bgimage", type="string", length=255, nullable=false)
+     */
+    private $bgimage;
 
     /*
      * @ORM\OneToMany(targetEntity="Audit", mappedBy="category")
@@ -61,6 +75,30 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setBgimage($bgimage)
+    {
+        $this->bgimage = $bgimage;
+
+        return $this;
+    }
+
+    public function getBgimage()
+    {
+        return $this->bgimage;
     }
 
     public function setPrice($price)

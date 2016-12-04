@@ -54,11 +54,21 @@ class DefaultController extends Controller
             return $this->redirectToRoute('homepage');
         }*/
         return $this->render('default/index.html.twig', [
-            //'urlEncuesta' => $this->get('router')->generate('show_survey'),
+            'urlPlan' => $this->get('router')->generate('show_plan'),
             'categories' => $categories,
             //'form' => $form->createView(),
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    /**
+     * @Route("/plan/show", name="show_plan")
+     */
+    public function viewAction() {
+
+        return $this -> render('AppBundle:Plan:view.html.twig', array(
+            // ...
+        ));
     }
 
 
