@@ -23,3 +23,11 @@ services:
   category_service:
       class: AppBundle\Domain\Services\CategoryService
       arguments: ["@category_repository"]
+  assessment_repository:
+        class: AppBundle\Infrastructure\Repositories\AssessmentRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+          - AppBundle\Entity\Assessment
+  assessment_service:
+      class: AppBundle\Domain\Services\AssessmentService
+      arguments: ["@assessment_repository"]

@@ -7,6 +7,7 @@ use AppBundle\Entity\Audit;
 use AppBundle\Entity\Category;
 use AppBundle\Domain\Services\CompanyService;
 use AppBundle\Domain\Services\CategoryService;
+use AppBundle\Domain\Services\AssessmentService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,7 @@ class DefaultController extends Controller
     {
         //categories de la audit
         $categories = $this->getCategoryService()->findAll();
+        $assessments = $this->getAssessmentService()->findAll();
 
         //build the form
         //$company = new Company();
@@ -56,6 +58,7 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'urlPlan' => $this->get('router')->generate('show_plan'),
             'categories' => $categories,
+            'assessments' => $assessments,
             //'form' => $form->createView(),
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
         ]);
@@ -86,5 +89,13 @@ class DefaultController extends Controller
     private function getCategoryService()
     {
         return $this->get("category_service");
+    }
+
+    /**
+     * @return AssessmentService
+     */
+    private function getAssessmentService()
+    {
+        return $this->get("assessment_service");
     }
 }
